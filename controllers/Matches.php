@@ -276,7 +276,7 @@ class Matches extends CI_Controller {
         {
             $names = $this->_names($model);
             $class_name = $names['class'];
-            $file_name = $names['file'];
+            $file_name = $names['file'].'_model';
             $directories = $names['directories'];
             if(file_exists(APPPATH.'models/'.$file_name.'.php'))
             {
@@ -286,7 +286,7 @@ class Matches extends CI_Controller {
             {
                 $f = $this->_get_template('model');
                 if($f === FALSE) return FALSE;
-                $this->_find_replace['{{MODEL}}'] = $class_name;
+                $this->_find_replace['{{MODEL}}'] = $class_name.'_model';
                 $this->_find_replace['{{MODEL_FILE}}'] = $file_name.'.php';
 
                 $extends = array_key_exists('extend',$arguments) ? $arguments['extend'] : $this->_mo_extends;
